@@ -51,7 +51,7 @@ public class ModRenderItem extends RenderItem
     @Override
     public void renderItem(ItemStack stack, IBakedModel model)
     {
-        if (!stack.isEmpty())
+        if (stack != null)
         {
             GlStateManager.pushMatrix();
             GlStateManager.translate(-0.5F, -0.5F, -0.5F);
@@ -120,7 +120,7 @@ public class ModRenderItem extends RenderItem
 
     private void renderModel(IBakedModel model, int color)
     {
-        renderModel(model, color, ItemStack.EMPTY);
+        renderModel(model, color, (ItemStack)null);
     }
 
     private void renderModel(IBakedModel model, int color, ItemStack stack)
@@ -140,7 +140,7 @@ public class ModRenderItem extends RenderItem
     
     private void renderQuads(VertexBuffer renderer, List<BakedQuad> quads, int color, ItemStack stack)
     {
-        boolean flag = color == -1 && !stack.isEmpty();
+        boolean flag = color == -1 && (stack != null);
         int i = 0;
 
         for (int j = quads.size(); i < j; ++i)
@@ -150,7 +150,7 @@ public class ModRenderItem extends RenderItem
 
             if (flag && bakedquad.hasTintIndex())
             {
-                k = itemColors.colorMultiplier(stack, bakedquad.getTintIndex());
+                k = itemColors.getColorFromItemstack(stack, bakedquad.getTintIndex());
 
                 if (EntityRenderer.anaglyphEnable)
                 {

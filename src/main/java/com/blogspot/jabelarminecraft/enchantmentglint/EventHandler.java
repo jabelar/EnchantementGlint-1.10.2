@@ -28,7 +28,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * Registry events are contained in separate classes in the init subpackage. It is important that
  * this class is annotated as an event bus subscriber and that the methods should be all static.
  */
-@EventBusSubscriber(modid = MainMod.MODID)
+@EventBusSubscriber
 public class EventHandler
 {
     /**

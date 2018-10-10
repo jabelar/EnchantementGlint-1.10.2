@@ -67,7 +67,7 @@ public class HexEntry extends IntegerEntry
 
     
     @Override
-    public void func_180790_a(int slotIndex, int x, int y, int listWidth, int slotHeight, int mouseX, int mouseY, boolean isSelected)
+    public void drawEntry(int slotIndex, int x, int y, int listWidth, int slotHeight, int mouseX, int mouseY, boolean isSelected)
     {
         boolean isChanged = isChanged();
 
@@ -76,21 +76,21 @@ public class HexEntry extends IntegerEntry
             String label = (!isValidValue ? TextFormatting.RED.toString() :
                     (isChanged ? TextFormatting.WHITE.toString() : TextFormatting.GRAY.toString()))
                     + (isChanged ? TextFormatting.ITALIC.toString() : "") + name;
-            mc.fontRenderer.drawString(
+            mc.fontRendererObj.drawString(
                     label,
                     owningScreen.entryList.labelX,
-                    y + slotHeight / 2 - mc.fontRenderer.FONT_HEIGHT / 2,
+                    y + slotHeight / 2 - mc.fontRendererObj.FONT_HEIGHT / 2,
                     0xFFFFFF);
         }
 
-        btnUndoChanges.x = owningEntryList.scrollBarX - 44;
-        btnUndoChanges.y = y;
+        btnUndoChanges.xPosition = owningEntryList.scrollBarX - 44;
+        btnUndoChanges.yPosition = y;
         btnUndoChanges.enabled = enabled() && isChanged;
         btnUndoChanges.drawButtonForegroundLayer(mouseX, mouseY);
 //        btnUndoChanges.drawButton(mc, mouseX, mouseY, partial);
 
-        btnDefault.x = owningEntryList.scrollBarX - 22;
-        btnDefault.y = y;
+        btnDefault.xPosition = owningEntryList.scrollBarX - 22;
+        btnDefault.yPosition = y;
         btnDefault.enabled = enabled() && !isDefault();
         btnDefault.drawButtonForegroundLayer(mouseX, mouseY);
 //        btnDefault.drawButton(mc, mouseX, mouseY, partial);
@@ -101,8 +101,8 @@ public class HexEntry extends IntegerEntry
             tooltipHoverChecker.updateBounds(y, y + slotHeight, x, owningScreen.entryList.controlX - 8);
 
         textFieldValue.width = 50;
-        textFieldValue.x = owningEntryList.controlX + + owningEntryList.controlWidth - 19 - 20 - textFieldValue.width;
-        textFieldValue.y = y + 1;
+        textFieldValue.xPosition = owningEntryList.controlX + + owningEntryList.controlWidth - 19 - 20 - textFieldValue.width;
+        textFieldValue.yPosition = y + 1;
         textFieldValue.setEnabled(enabled());
         textFieldValue.drawTextBox();
         

@@ -1,6 +1,6 @@
 package com.blogspot.jabelarminecraft.enchantmentglint.client.renderers;
 
-import net.minecraft.client.model.ModelZombie;
+import net.minecraft.client.model.ModelZombieVillager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderZombie;
 import net.minecraftforge.fml.relauncher.Side;
@@ -12,15 +12,15 @@ public class ModRenderZombie extends RenderZombie
     public ModRenderZombie(RenderManager renderManagerIn)
     {
         super(renderManagerIn);
-
-        layerRenderers.remove(3);
+        
+        layerRenderers.remove(2);
         ModLayerBipedArmor layerbipedarmor = new ModLayerBipedArmor(this)
         {
             @Override
             protected void initArmor()
             {
-                modelLeggings = new ModelZombie(0.5F, true);
-                modelArmor = new ModelZombie(1.0F, true);
+                modelLeggings = new ModelZombieVillager(0.5F, 0.0F, true);
+                modelArmor = new ModelZombieVillager(1.0F, 0.0F, true);
             }
         };
         addLayer(layerbipedarmor);

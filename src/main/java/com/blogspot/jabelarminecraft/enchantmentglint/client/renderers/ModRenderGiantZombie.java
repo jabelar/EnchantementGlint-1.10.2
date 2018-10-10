@@ -12,7 +12,7 @@ public class ModRenderGiantZombie extends RenderGiantZombie
 
     public ModRenderGiantZombie(RenderManager manager, float scale)
     {
-        super(manager, scale);
+        super(manager, new ModelZombie(), 0.5F, scale);
         ModLayerBipedArmor layerbipedarmor = new ModLayerBipedArmor(this)
         {
             @Override

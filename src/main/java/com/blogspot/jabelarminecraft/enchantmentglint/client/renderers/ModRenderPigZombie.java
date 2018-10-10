@@ -14,7 +14,7 @@ public class ModRenderPigZombie extends RenderPigZombie
     {
         super(renderManagerIn);
 
-        layerRenderers.remove(3);
+        layerRenderers.remove(2);
         addLayer(new ModLayerBipedArmor(this)
         {
             @Override

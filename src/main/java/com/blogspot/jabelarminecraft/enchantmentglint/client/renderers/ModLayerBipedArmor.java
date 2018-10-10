@@ -51,7 +51,7 @@ public class ModLayerBipedArmor extends ModLayerArmorBase<ModelBiped>
 
     protected void setModelVisible(ModelBiped model)
     {
-        model.setVisible(false);
+        model.setInvisible(false);
     }
 
     @Override

@@ -19,18 +19,13 @@ package com.blogspot.jabelarminecraft.enchantmentglint.proxy;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-import com.blogspot.jabelarminecraft.enchantmentglint.MainMod;
 import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderArmorStand;
 import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderGiantZombie;
-import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderHusk;
 import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderItem;
 import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderPigZombie;
 import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderPlayer;
 import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderSkeleton;
-import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderStray;
-import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderWitherSkeleton;
 import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderZombie;
-import com.blogspot.jabelarminecraft.enchantmentglint.client.renderers.ModRenderZombieVillager;
 import com.blogspot.jabelarminecraft.enchantmentglint.init.ModConfig;
 
 import net.minecraft.client.Minecraft;
@@ -53,13 +48,9 @@ import net.minecraft.entity.item.EntityFireworkRocket;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.monster.EntityGiantZombie;
-import net.minecraft.entity.monster.EntityHusk;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntityStray;
-import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.monster.EntityZombieVillager;
 import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntitySnowball;
@@ -72,7 +63,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 
 // TODO: Auto-generated Javadoc
-@EventBusSubscriber(value = Side.CLIENT, modid = MainMod.MODID)
+@EventBusSubscriber(value = Side.CLIENT)
 public class ClientProxy implements IProxy
 {
     public static RenderItem modRenderItem; // used to provide custom enchantment glint color
@@ -126,11 +117,7 @@ public class ClientProxy implements IProxy
 
         mc.getRenderManager().entityRenderMap.put(EntityItem.class, new RenderEntityItem(mc.getRenderManager(), modRenderItem));
         mc.getRenderManager().entityRenderMap.put(EntitySkeleton.class, new ModRenderSkeleton(mc.getRenderManager()));
-        mc.getRenderManager().entityRenderMap.put(EntityWitherSkeleton.class, new ModRenderWitherSkeleton(mc.getRenderManager()));
-        mc.getRenderManager().entityRenderMap.put(EntityStray.class, new ModRenderStray(mc.getRenderManager()));
         mc.getRenderManager().entityRenderMap.put(EntityZombie.class, new ModRenderZombie(mc.getRenderManager()));
-        mc.getRenderManager().entityRenderMap.put(EntityHusk.class, new ModRenderHusk(mc.getRenderManager()));
-        mc.getRenderManager().entityRenderMap.put(EntityZombieVillager.class, new ModRenderZombieVillager(mc.getRenderManager()));
         mc.getRenderManager().entityRenderMap.put(EntityGiantZombie.class, new ModRenderGiantZombie(mc.getRenderManager(), 6.0F));
         mc.getRenderManager().entityRenderMap.put(EntityPigZombie.class, new ModRenderPigZombie(mc.getRenderManager()));
         mc.getRenderManager().entityRenderMap.put(EntityArmorStand.class, new ModRenderArmorStand(mc.getRenderManager()));
@@ -154,7 +141,6 @@ public class ClientProxy implements IProxy
         if (enchMap.containsKey(Enchantments.LOOTING)) return alpha | ModConfig.LOOTING;
         if (enchMap.containsKey(Enchantments.SHARPNESS)) return alpha | ModConfig.SHARPNESS;
         if (enchMap.containsKey(Enchantments.SMITE)) return alpha | ModConfig.SMITE;
-        if (enchMap.containsKey(Enchantments.SWEEPING)) return alpha | ModConfig.SWEEPING;
         if (enchMap.containsKey(Enchantments.UNBREAKING)) return alpha | ModConfig.UNBREAKING;
 
         // Bow enchantments
@@ -184,10 +170,6 @@ public class ClientProxy implements IProxy
         if (enchMap.containsKey(Enchantments.PROTECTION)) return alpha | ModConfig.PROTECTION;
         if (enchMap.containsKey(Enchantments.RESPIRATION)) return alpha | ModConfig.RESPIRATION;
         if (enchMap.containsKey(Enchantments.THORNS)) return alpha | ModConfig.THORNS;
-
-        // Curses
-        if (enchMap.containsKey(Enchantments.VANISHING_CURSE)) return alpha | ModConfig.VANISHING_CURSE;
-        if (enchMap.containsKey(Enchantments.BINDING_CURSE)) return alpha | ModConfig.BINDING_CURSE;
         
         return -8372020;
     }

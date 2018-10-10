@@ -7,7 +7,6 @@ import com.blogspot.jabelarminecraft.enchantmentglint.init.ModConfig;
 import com.blogspot.jabelarminecraft.enchantmentglint.proxy.ClientProxy;
 import com.google.common.collect.Maps;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
@@ -120,7 +119,7 @@ public abstract class ModLayerArmorBase<T extends ModelBase> implements LayerRen
             parRenderLivingBase.bindTexture(RES_ITEM_GLINT);
         }
 
-        Minecraft.getMinecraft().entityRenderer.setupFogColor(true);
+//        Minecraft.getMinecraft().entityRenderer.setupFogColor(true);
         GlStateManager.enableBlend();
         GlStateManager.depthFunc(514);
         GlStateManager.depthMask(false);
@@ -148,7 +147,7 @@ public abstract class ModLayerArmorBase<T extends ModelBase> implements LayerRen
         GlStateManager.depthMask(true);
         GlStateManager.depthFunc(515);
         GlStateManager.disableBlend();
-        Minecraft.getMinecraft().entityRenderer.setupFogColor(false);
+//        Minecraft.getMinecraft().entityRenderer.setupFogColor(false);
     }
 
     protected abstract void initArmor();
